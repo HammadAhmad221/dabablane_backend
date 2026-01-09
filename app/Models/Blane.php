@@ -7,11 +7,11 @@ use App\Helpers\FileHelper;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Facades\DB;
-use App\Traits\HasOwnership;
+use App\Traits\BelongsToVendor;
 
 class Blane extends Model
 {
-    use HasFactory, HasOwnership;
+    use HasFactory, BelongsToVendor;
 
     protected $fillable = [
         'vendor_id',
@@ -96,10 +96,9 @@ class Blane extends Model
     {
         parent::boot();
 
-        // Auto-assign vendor_id from authenticated vendor
+        // Additional creating logic for commerce_name backward compatibility
         static::creating(function ($blane) {
             if (auth()->check() && auth()->user()->hasRole('vendor')) {
-                $blane->vendor_id = auth()->id();
                 // Keep commerce_name for backward compatibility during migration
                 if (empty($blane->commerce_name)) {
                     $blane->commerce_name = auth()->user()->company_name;
@@ -107,7 +106,7 @@ class Blane extends Model
             }
         });
 
-        // Existing expiration check
+        // Expiration check
         static::retrieved(function ($blane) {
             if ($blane->expiration_date && $blane->status !== 'expired') {
                 if ($blane->expiration_date <= now()) {

@@ -3,9 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\BelongsToVendor;
 
 class Rating extends Model
 {
+    use BelongsToVendor;
     protected $fillable = [
         'vendor_id',
         'blane_id',

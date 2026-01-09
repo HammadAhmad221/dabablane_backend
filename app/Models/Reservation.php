@@ -5,9 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
+use App\Traits\BelongsToVendor;
 
 class Reservation extends Model
 {
+    use BelongsToVendor;
     protected $fillable = [
         'vendor_id',
         'blane_id',

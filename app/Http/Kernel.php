@@ -21,6 +21,7 @@ class Kernel extends HttpKernel
         'api' => [
             \Illuminate\Routing\Middleware\ThrottleRequests::class.':api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            \App\Http\Middleware\EnforceVendorContext::class,
         ],
     ];
 
@@ -35,6 +36,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'back' => \App\Http\Middleware\BackMiddleware::class,
         'front' => \App\Http\Middleware\FrontMiddleware::class,
-        // 'verify.frontend' => \App\Http\Middleware\VerifyFrontendRequest::class,
+        'vendor' => \App\Http\Middleware\VendorMiddleware::class,
+        'vendor.context' => \App\Http\Middleware\EnforceVendorContext::class,
     ];
 }
