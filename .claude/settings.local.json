@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(move \"app\\\\Http\\\\Controllers\\\\Api\\\\AdminSubscriptionController.php\" \"app\\\\Http\\\\Controllers\\\\Api\\\\Back\\\\V1\"\" && move \"appHttpControllersApiVendorSubscriptionController.php\" \"appHttpControllersApiBackV1\"\")",
+      "Bash(move \"app\\\\Http\\\\Controllers\\\\Api\\\\TermsConditionController.php\" \"app\\\\Http\\\\Controllers\\\\Api\\\\Back\\\\V1\"\" && move \"appHttpControllersApiMobileAuthController.php\" \"appHttpControllersApiBackV1\"\")",
+      "Bash(move \"app\\\\Http\\\\Controllers\\\\Api\\\\SocialAuthController.php\" \"app\\\\Http\\\\Controllers\\\\Api\\\\Back\\\\V1\"\" && move \"appHttpControllersApiUserProfileController.php\" \"appHttpControllersApiBackV1\"\")",
+      "Bash(move \"app\\\\Http\\\\Controllers\\\\Api\\\\VendorAuthController.php\" \"app\\\\Http\\\\Controllers\\\\Api\\\\Back\\\\V1\"\" && move \"appHttpControllersApiVendorProfileController.php\" \"appHttpControllersApiBackV1\"\")",
+      "Bash(powershell -Command:*)"
+    ]
+  }
+}

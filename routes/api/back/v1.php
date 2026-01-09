@@ -101,7 +101,6 @@ Route::prefix('back')->as('back.')->middleware(["auth:sanctum", "throttle:api"])
             Route::apiResource('orders', OrderController::class);
             Route::apiResource('reservations', ReservationController::class);
             Route::get('/reservations/get-id-by-number/{num_res}', [ReservationController::class, 'getIdByNumber']);
-            // Route::apiResource('reservationslist', ReservationController::class, 'reservationlist');
             Route::get('/reservationslist', [ReservationController::class, 'reservationlist']);
             Route::get('/getOrdersList', [OrderController::class, 'getOrdersList']);
             Route::get('/getReservationsAndOrders', [ReservationController::class, 'getReservationsAndOrders']);

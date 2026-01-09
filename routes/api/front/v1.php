@@ -44,7 +44,6 @@ Route::prefix('front')->as('front.')->group(function () {
         Route::apiResource('faqs', FaqController::class)->only(['index', 'show']);
         Route::get('blanes/{id}/blaneImage', [BlanController::class, 'getblanImage']);
         Route::apiResource('blane-ratings', RatingController::class);
-        // Route::apiResource('blan-images', BlanImageController::class);
         Route::apiResource('coupons', CouponController::class);
         Route::post('contacts', [ContactController::class, 'store']);
 

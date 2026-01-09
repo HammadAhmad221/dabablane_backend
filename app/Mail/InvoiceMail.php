@@ -30,24 +30,6 @@ class InvoiceMail extends Mailable
         ]);
     }
 
-    // public function build()
-    // {
-    //     $email = $this->from(config('mail.from.address'), config('mail.from.name'))
-    //         ->replyTo($this->config->billing_email, 'Service Facturation')
-    //         ->subject('Votre facture #' . $this->invoice->invoice_number)
-    //         ->markdown('emails.invoice');
-
-    //     // Only attach PDF if it exists
-    //     if (Storage::exists($this->invoice->pdf_path)) {
-    //         $email->attach(Storage::path($this->invoice->pdf_path), [
-    //             'as' => 'facture-' . $this->invoice->invoice_number . '.pdf',
-    //             'mime' => 'application/pdf',
-    //         ]);
-    //     }
-
-    //     return $email;
-    // }
-
     public function build()
     {
         $email = $this->from(config('mail.from.address'), config('mail.from.name'))
@@ -55,8 +37,6 @@ class InvoiceMail extends Mailable
             ->subject('Votre facture #' . $this->invoice->invoice_number)
             ->markdown('emails.invoice');
 
-        // Build the full storage path from public path
-        // $storagePath = 'public/uploads/' . $this->invoice->pdf_path;
         $pdfFullPath = storage_path('app/public/' . $this->invoice->pdf_path);
 
         if (file_exists($pdfFullPath)) {
@@ -69,53 +49,6 @@ class InvoiceMail extends Mailable
         }
 
 
-        // $storagePath = storage_path('app/public/uploads/invoices/' . $this->invoice->pdf_path);
-        // $fullPath = storage_path('app/' . $storagePath);
-
-        // // Only attach PDF if it exists
-        // if (file_exists($fullPath)) {
-        //     $email->attach($fullPath, [
-        //         'as' => 'facture-' . $this->invoice->invoice_number . '.pdf',
-        //         'mime' => 'application/pdf',
-        //     ]);
-        // } else {
-        //     \Log::warning('PDF file not found for attachment: ' . $fullPath);
-        // }
-
         return $email;
     }
-
-    // public function build()
-    // {
-    //     $email = $this->from(config('mail.from.address'), config('mail.from.name'))
-    //         ->replyTo($this->config->billing_email, 'Service Facturation')
-    //         ->subject('Votre facture #' . $this->invoice->invoice_number)
-    //         ->markdown('emails.invoice');
-
-    //     // Convert public path to storage path for attachment
-    //     $storagePath = 'public/' . str_replace('storage/', '', $this->invoice->pdf_path);
-
-    //     // Only attach PDF if it exists
-    //     if (Storage::exists($storagePath)) {
-    //         $email->attach(Storage::path($storagePath), [
-    //             'as' => 'facture-' . $this->invoice->invoice_number . '.pdf',
-    //             'mime' => 'application/pdf',
-    //         ]);
-    //     } else {
-    //         \Log::warning('PDF file not found for attachment: ' . $storagePath);
-    //     }
-
-    //     return $email;
-    // }
-
-    // public function build()
-    // {
-    //     return $this->from($this->config->billing_email, env('APP_NAME', 'DabaBlane'))
-    //         ->subject('Votre facture #' . $this->invoice->invoice_number)
-    //         ->markdown('emails.invoice')
-    //         ->attach(Storage::path($this->invoice->pdf_path), [
-    //             'as' => 'facture-' . $this->invoice->invoice_number . '.pdf',
-    //             'mime' => 'application/pdf',
-    //         ]);
-    // }
 }

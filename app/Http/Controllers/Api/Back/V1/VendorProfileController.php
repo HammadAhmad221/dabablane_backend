@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\Back\V1;
 
 use App\Http\Controllers\Api\BaseController;
 use App\Models\VendorCoverMedia;

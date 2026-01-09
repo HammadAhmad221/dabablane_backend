@@ -3,15 +3,15 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
-use App\Http\Controllers\Api\MobileAuthController;
-use App\Http\Controllers\Api\VendorAuthController;
-use App\Http\Controllers\Api\SocialAuthController;
-use App\Http\Controllers\Api\UserProfileController;
-use App\Http\Controllers\Api\VendorProfileController;
+use App\Http\Controllers\Api\Back\V1\MobileAuthController;
+use App\Http\Controllers\Api\Back\V1\VendorAuthController;
+use App\Http\Controllers\Api\Back\V1\SocialAuthController;
+use App\Http\Controllers\Api\Back\V1\UserProfileController;
+use App\Http\Controllers\Api\Back\V1\VendorProfileController;
 use App\Http\Controllers\Api\Back\V1\AdminVendorController;
-use App\Http\Controllers\Api\AdminSubscriptionController;
-use App\Http\Controllers\Api\VendorSubscriptionController;
-use App\Http\Controllers\Api\TermsConditionController;
+use App\Http\Controllers\Api\Back\V1\AdminSubscriptionController;
+use App\Http\Controllers\Api\Back\V1\VendorSubscriptionController;
+use App\Http\Controllers\Api\Back\V1\TermsConditionController;
 
 // Sanctum-protected route to get the authenticated user
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
@@ -31,7 +31,6 @@ Route::post('/forgotVendorPassword', [VendorAuthController::class, 'forgotVendor
 Route::post('/checkVendorCreatedByAdmin', [VendorAuthController::class, 'checkVendorCreatedByAdmin']);
 Route::post('/socialLogin', [SocialAuthController::class, 'socialLogin']);
 Route::put('/updateProfile', [UserProfileController::class, 'updateProfile'])->middleware('auth:sanctum');
-// Route::put('/updateVendor', [VendorProfileController::class, 'updateVendor'])->middleware('auth:sanctum');
 Route::post('/updateVendor', [VendorProfileController::class, 'updateVendor'])->middleware('auth:sanctum');
 Route::put('/updateVendorPassword', [VendorProfileController::class, 'updateVendorPassword'])->middleware('auth:sanctum');
 Route::post('/setVendorPassword', [VendorProfileController::class, 'setVendorPassword'])->middleware('auth:sanctum');
@@ -42,11 +41,7 @@ Route::middleware(['auth:sanctum', 'role:admin'])->prefix('admin')->group(functi
     Route::post('/createVendor', [AdminVendorController::class, 'createVendorByAdmin']);
 
     Route::put('/updateVendor', [AdminVendorController::class, 'updateVendorByAdmin']);
-    // Route::post('/updateVendor', [AdminVendorController::class, 'updateVendorByAdmin']);
-
     Route::put('/updateVendor/{vendorId}', [AdminVendorController::class, 'updateVendorByAdmin']);
-    // Route::post('/updateVendor/{vendorId}', [AdminVendorController::class, 'updateVendorByAdmin']);
-
     Route::post('/resetVendorPassword', [AdminVendorController::class, 'resetVendorPasswordByAdmin']);
     Route::post('/resetVendorPassword/{vendorId}', [AdminVendorController::class, 'resetVendorPasswordByAdmin']);
 });

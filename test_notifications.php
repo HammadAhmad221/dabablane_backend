@@ -105,10 +105,3 @@ echo "  - Subject: " . ($latest->data['subject'] ?? 'N/A') . "\n";
 echo "  - Created: {$latest->created_at}\n\n";
 
 echo "=== All Tests Complete ===\n";
-
-// Clean up (optional)
-// $testVendor->delete();
-// $testBlane->delete();
-// $testContact->delete();
-
-

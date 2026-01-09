@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\Back\V1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreTermsConditionRequest;

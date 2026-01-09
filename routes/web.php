@@ -7,20 +7,6 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\BlaneCreationNotification;
 use App\Models\Blane;
 
-
-// Default welcome route
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-// Authentication routes for web
-// Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
-// Route::post('/login', [AuthController::class, 'login']);
-// Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-
-// Route::get('/payment/cmi/success', [PaymentCmiController::class, 'paymentSuccess'])->name('payment.success');
-// Route::get('/payment/cmi/fail', [PaymentCmiController::class, 'paymentFail'])->name('payment.fail');
-
 // Test route for sending blane creation email
 Route::get('/test/blane-email', function () {
     // Try to get an existing blane with a slug, or create a dummy one
